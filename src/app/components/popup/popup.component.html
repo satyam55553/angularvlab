@@ -12,12 +12,12 @@
                 <h4 class="modal-title" id="myModalLabel">Input Values</h4>
             </div>
             <div class="modal-body">
-                <form>
+                <form (ngSubmit)="onSubmitInput()" [formGroup]="registerForm">
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label>Amplitude</label>
-                                <input type="text" formControlName="Amplitude" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Amplitude.errors }" />
+                                <input type="text" id="amplitude" [(ngModel)]="amplitude" formControlName="Amplitude" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Amplitude.errors }" />
                                 <div *ngIf="submitted && f.Amplitude.errors" class="invalid-feedback">
                                     <div *ngIf="f.Amplitude.errors.required">Amplitude is required</div>
                                 </div>
@@ -26,7 +26,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label>Frequency</label>
-                                <input type="text" formControlName="Frequency" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Frequency.errors }" />
+                                <input type="text" id="frequency" [(ngModel)]="frequency" formControlName="Frequency" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Frequency.errors }" />
                                 <div *ngIf="submitted && f.Frequency.errors" class="invalid-feedback">
                                     <div *ngIf="f.Frequency.errors.required">Frequency is required</div>
                                     <div *ngIf="f.Frequency.errors.Frequency">Frequency must be a valid Number</div>
@@ -36,7 +36,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label>Frequency_Sensitivity</label>
-                                <input type="text" formControlName="Frequency_Sensitivity" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Frequency_Sensitivity.errors }" />
+                                <input type="text" id="frequency_sensitivity" [(ngModel)]="frequency_sensitivity" formControlName="Frequency_Sensitivity" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Frequency_Sensitivity.errors }" />
                                 <div *ngIf="submitted && f.Frequency_Sensitivity.errors" class="invalid-feedback">
                                     <div *ngIf="f.Frequency_Sensitivity.errors">Frequency_Sensitivity must be Valid</div>
                                 </div>

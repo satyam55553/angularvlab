@@ -297,7 +297,9 @@
 
     <!-- <img class="m-3" src="https://vlab.amrita.edu/userfiles/7/image/AM%20modulation/1.gif" alt="FM image"> -->
 </div>
-
+<div class="container">
+    <button class="btn btn-primary rounded-pill m-21" routerLink="/learnmore">Learn More</button>
+</div>
 <div class="container">
     <!-- Next Steps -->
     <h2 class="text-primary">Your Labspace</h2>
@@ -306,7 +308,7 @@
     <input type="hidden" #selection>
 
     <div class="card-container">
-        <app-popup></app-popup>
+        <app-popup (inputAdd)="getSignal($event)" (msgToGraph)="fwdSignalToGraph($event)"></app-popup>
         <div class="card" style="height: 5rem;" tabindex="0">
             <span>Frequency Modulator</span>
         </div>

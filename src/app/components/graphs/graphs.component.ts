@@ -1,7 +1,8 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import * as Chart from 'chart.js';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
+import { signal } from 'src/app/signal';
 // Import above components
 
 @Component({
@@ -10,7 +11,8 @@ import { Color, Label } from 'ng2-charts';
   styleUrls: ['./graphs.component.css'],
 })
 export class GraphsComponent implements OnInit {
-
+  @Input()
+  signalFromPopup: signal = new signal;
   constructor() { }
 
   ngOnInit(): void {
@@ -21,12 +23,12 @@ export class GraphsComponent implements OnInit {
         xValues.push(x);
       }
     }
-
+    console.log("Signal from popup"+this.signalFromPopup);
     //Input Signal Graph
     var xValues: any[] = [];
     var yValues: any[] = [];
-    var Am = 2;
-    var fm = 1 / 4;//frequency of i/p
+    var Am = this.signalFromPopup.amplitude;//1
+    var fm = this.signalFromPopup.frequency;//1 / 4;//frequency of i/p
     var phase = 0;//Math.PI/2
     var wm = 2 * Math.PI * fm;
 
@@ -127,7 +129,7 @@ export class GraphsComponent implements OnInit {
     var xValues: any[] = [];
     var yValues: any[] = [];
     var Ao = Ac;
-    var kf = 0.2;
+    var kf = this.signalFromPopup.frequency_sensitivity;//0.2;
     var mf = (kf * Am) / fm;
 
     var eqno = Ao + "*Math.cos(" + wc + "*x+" + mf + "*Math.sin(" + wm + "*x))";
