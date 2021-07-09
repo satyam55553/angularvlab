@@ -9,6 +9,7 @@ import { GraphsComponent } from './components/graphs/graphs.component';
 import { PopupComponent } from './components/popup/popup.component';
 import { AmlabComponent } from './components/amlab/amlab.component';
 import { LearnmoreComponent } from './components/learnmore/learnmore.component';
+import { AmgraphsComponent } from './components/amgraphs/amgraphs.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { LearnmoreComponent } from './components/learnmore/learnmore.component';
     GraphsComponent,
     PopupComponent,
     AmlabComponent,
-    LearnmoreComponent
+    LearnmoreComponent,
+    AmgraphsComponent
   ],
   imports: [
     BrowserModule,

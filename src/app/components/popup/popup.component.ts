@@ -2,6 +2,7 @@ import { Component, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { signal } from 'src/app/signal';
 import { EventEmitter } from '@angular/core';
+import { GraphsComponent } from '../graphs/graphs.component';
 
 @Component({
   selector: 'app-popup',
@@ -10,8 +11,10 @@ import { EventEmitter } from '@angular/core';
 })
 export class PopupComponent implements OnInit {
   
-  @Output() popuptolab: EventEmitter<signal> = new EventEmitter();
+  // @Output() popuptolab: EventEmitter<signal> = new EventEmitter();
   input_signal!: signal;
+
+  graphCompObj=new GraphsComponent();
   
   title = 'angularpopup';
   showModal: boolean = false;
@@ -68,9 +71,10 @@ export class PopupComponent implements OnInit {
       return;
     }
     if (this.submitted) {
-      this.popuptolab.emit(this.input_signal);
-      console.log("Input emitted is",this.input_signal);
+      // this.popuptolab.emit(this.input_signal);
+      // console.log("Input emitted is",this.input_signal);
       this.showModal = false;
+      this.graphCompObj.createGraphs(this.input_signal);
     }
   }
 }

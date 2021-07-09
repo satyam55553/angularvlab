@@ -1,18 +1,13 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import * as Chart from 'chart.js';
-import { ChartDataSets, ChartOptions } from 'chart.js';
-import { Color, Label } from 'ng2-charts';
 import { signal } from 'src/app/signal';
-// Import above components
 
 @Component({
-  selector: 'app-graphs',
-  templateUrl: './graphs.component.html',
-  styleUrls: ['./graphs.component.css'],
+  selector: 'app-amgraphs',
+  templateUrl: './amgraphs.component.html',
+  styleUrls: ['./amgraphs.component.css']
 })
-export class GraphsComponent implements OnInit {
-  // @Input() signalFromLab: any;
-  
+export class AmgraphsComponent implements OnInit {
   Signal: signal;
   constructor() {
     this.Signal={
@@ -23,17 +18,7 @@ export class GraphsComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    // if(typeof this.signalFromLab==='undefined'){
-    //   console.log("Signal From lab = ",this.signalFromLab)
-    //   this.signalFromLab = {
-    //     //getting values from form fields
-    //     amplitude: 1,
-    //     frequency: 1,
-    //     frequency_sensitivity: 1,
-    //   };
-    
-    // }
-      this.createGraphs(this.Signal);
+    this.createGraphs(this.Signal);
   }
 
   createGraphs(signalFromLab:signal){
@@ -154,8 +139,8 @@ export class GraphsComponent implements OnInit {
     var kf =signalFromLab.frequency_sensitivity;//0.2;
     var mf = (kf * Am) / fm;
 
-    var eqno = Ao + "*Math.cos(" + wc + "*x+" + mf + "*Math.sin(" + wm + "*x))";
-    // var eqno = "("+(Ac + "+" + Am + "*Math.cos(" + wm + "*x)") + ")*Math.cos(" + wc + "*x)";
+    // var eqno = Ao + "*Math.cos(" + wc + "*x+" + mf + "*Math.sin(" + wm + "*x))";
+    var eqno = "("+(Ac + "+" + Am + "*Math.cos(" + wm + "*x)") + ")*Math.cos(" + wc + "*x)";
     console.log(eqno);
     generateData(eqno, 0, 10, 0.1);
     new Chart("opChart", {
