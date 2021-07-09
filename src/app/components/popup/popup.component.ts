@@ -9,20 +9,19 @@ import { EventEmitter } from '@angular/core';
   styleUrls: ['./popup.component.css']
 })
 export class PopupComponent implements OnInit {
-  amplitude: number=0;
-  frequency: number=0;
-  frequency_sensitivity: number=0;
-  @Output() inputAdd: EventEmitter<signal> = new EventEmitter();
-
+  
+  @Output() popuptolab: EventEmitter<signal> = new EventEmitter();
+  input_signal!: signal;
+  
   title = 'angularpopup';
   showModal: boolean = false;
   registerForm!: FormGroup;
   submitted = false;
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder) {
+   }
 
   show() {
     this.showModal = true; // Show-Hide Modal Check
-
   }
 
   hide() {
@@ -54,23 +53,24 @@ export class PopupComponent implements OnInit {
 
   onSubmitInput() {
     console.log("On Submit Input");
-    const input_signal = {
-      amplitude: this.amplitude,
-      frequency: this.frequency,
-      frequency_sensitivity: this.frequency_sensitivity,
-    }
+    this.input_signal = {
+      //getting values from form fields
+      amplitude: this.registerForm.value.Amplitude,
+      frequency: this.registerForm.value.Frequency,
+      frequency_sensitivity: this.registerForm.value.Frequency_Sensitivity,
+    };
+    console.log(this.input_signal);
+    
     this.submitted = true;
     // stop here if form is invalid
-    // if (this.registerForm.invalid) {
-    //   console.log("Invalid");
-    //   return;
-    // }
-    // if (this.submitted) {
-    //   console.log("Input emitted");
-    //   this.inputAdd.emit(input_signal);
-    //   this.showModal = false;
-    // }
-    this.inputAdd.emit(input_signal);
-    this.showModal = false;
+    if (this.registerForm.invalid) {
+      console.log("Invalid Form");
+      return;
+    }
+    if (this.submitted) {
+      this.popuptolab.emit(this.input_signal);
+      console.log("Input emitted is",this.input_signal);
+      this.showModal = false;
+    }
   }
 }

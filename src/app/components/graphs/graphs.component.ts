@@ -11,11 +11,26 @@ import { signal } from 'src/app/signal';
   styleUrls: ['./graphs.component.css'],
 })
 export class GraphsComponent implements OnInit {
-  @Input()
-  signalFromPopup: signal = new signal;
-  constructor() { }
+  @Input() signalFromLab: any;
+  constructor() {
+    
+   }
 
   ngOnInit(): void {
+    if(typeof this.signalFromLab==='undefined'){
+      console.log("Signal From lab = ",this.signalFromLab)
+      this.signalFromLab = {
+        //getting values from form fields
+        amplitude: 1,
+        frequency: 1,
+        frequency_sensitivity: 1,
+      };
+    }
+    this.createGraphs();
+  }
+
+  createGraphs(){
+    
     //This function generates data for our graph
     function generateData(value: string, i1: number, i2: number, step = 0.5) {
       for (let x = i1; x <= i2; x += step) {
@@ -23,12 +38,12 @@ export class GraphsComponent implements OnInit {
         xValues.push(x);
       }
     }
-    console.log("Signal from popup"+this.signalFromPopup);
+    console.log("Inside graph onInit");
     //Input Signal Graph
     var xValues: any[] = [];
     var yValues: any[] = [];
-    var Am = this.signalFromPopup.amplitude;//1
-    var fm = this.signalFromPopup.frequency;//1 / 4;//frequency of i/p
+    var Am =this.signalFromLab.amplitude//1;
+    var fm =this.signalFromLab.frequency;//1 / 4;//frequency of i/p
     var phase = 0;//Math.PI/2
     var wm = 2 * Math.PI * fm;
 
@@ -129,7 +144,7 @@ export class GraphsComponent implements OnInit {
     var xValues: any[] = [];
     var yValues: any[] = [];
     var Ao = Ac;
-    var kf = this.signalFromPopup.frequency_sensitivity;//0.2;
+    var kf =this.signalFromLab.frequency_sensitivity;//0.2;
     var mf = (kf * Am) / fm;
 
     var eqno = Ao + "*Math.cos(" + wc + "*x+" + mf + "*Math.sin(" + wm + "*x))";
@@ -177,5 +192,4 @@ export class GraphsComponent implements OnInit {
       }
     });
   }
-
 }

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { signal } from 'src/app/signal';
+import { PopupComponent } from '../popup/popup.component';
 
 @Component({
   selector: 'app-lab',
@@ -7,17 +8,21 @@ import { signal } from 'src/app/signal';
   styleUrls: ['./lab.component.css']
 })
 export class LabComponent implements OnInit {
-  signalFromPopup: signal = new signal;
   constructor() { }
 
-  ngOnInit(): void {
-  }
-  //getting signal data from popup
-  getSignal(signal: signal) {
-    console.log("From popup"+signal);
+  input_signal_fromPopup!: signal;
 
+  ngOnInit(): void {
+    // this.input_signal_fromPopup = {
+    //   amplitude: 0,
+    //   frequency: 0,
+    //   frequency_sensitivity: 0,
+    // };
   }
-  fwdSignalToGraph($event:any) {
-    this.signalFromPopup = $event;
+
+  //getting signal data from popup
+  getSignalFromPopup(signal: signal) {
+    this.input_signal_fromPopup = signal;
+    console.log("Input Signal From popup in lab is " , this.input_signal_fromPopup);
   }
 }

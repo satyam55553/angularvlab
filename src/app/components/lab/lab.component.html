@@ -308,7 +308,7 @@
     <input type="hidden" #selection>
 
     <div class="card-container">
-        <app-popup (inputAdd)="getSignal($event)" (msgToGraph)="fwdSignalToGraph($event)"></app-popup>
+        <app-popup (popuptolab)="getSignalFromPopup($event)"></app-popup>
         <div class="card" style="height: 5rem;" tabindex="0">
             <span>Frequency Modulator</span>
         </div>
@@ -323,5 +323,5 @@
     <h2 class="text-primary">GRAPHS</h2>
     <p>Observe the graphical view of your signals below</p>
     <br>
-    <app-graphs></app-graphs>
+    <app-graphs [signalFromLab]="input_signal_fromPopup"></app-graphs>
 </div>
