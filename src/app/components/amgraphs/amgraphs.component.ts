@@ -10,16 +10,15 @@ import { signal } from 'src/app/signal';
 export class AmgraphsComponent implements OnInit {
   Signal: signal = new signal;
   constructor() {
-   
-   }
-
-  ngOnInit(): void {
     this.Signal={
       amplitude:0,
       frequency:0,
       frequency_sensitivity:0,
     };
-    this.createGraphs(this.Signal);
+   }
+
+  ngOnInit(): void {
+    
   }
 
   createGraphs(signalFromLab:signal){

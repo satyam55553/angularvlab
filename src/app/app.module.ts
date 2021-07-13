@@ -10,6 +10,7 @@ import { PopupComponent } from './components/popup/popup.component';
 import { AmlabComponent } from './components/amlab/amlab.component';
 import { LearnmoreComponent } from './components/learnmore/learnmore.component';
 import { AmgraphsComponent } from './components/amgraphs/amgraphs.component';
+import { AmpopupComponent } from './components/ampopup/ampopup.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AmgraphsComponent } from './components/amgraphs/amgraphs.component';
     PopupComponent,
     AmlabComponent,
     LearnmoreComponent,
-    AmgraphsComponent
+    AmgraphsComponent,
+    AmpopupComponent
   ],
   imports: [
     BrowserModule,

@@ -23,6 +23,7 @@ export class GraphsComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    console.log("Inside graph onInit");
     // if(typeof this.signalFromLab==='undefined'){
     //   console.log("Signal From lab = ",this.signalFromLab)
     //   this.signalFromLab = {
@@ -33,7 +34,7 @@ export class GraphsComponent implements OnInit {
     //   };
     
     // }
-      this.createGraphs(this.Signal);
+      // this.createGraphs(this.Signal);
   }
 
   createGraphs(signalFromLab:signal){
@@ -46,7 +47,7 @@ export class GraphsComponent implements OnInit {
       }
       console.log(xValues,"  ",yValues);
     }
-    console.log("Inside graph onInit");
+    
     //Input Signal Graph
     var xValues: any[] = [];
     var yValues: any[] = [];
