@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { signal } from 'src/app/signal';
 import { EventEmitter } from '@angular/core';
 import { GraphsComponent } from '../graphs/graphs.component';
+import { AmgraphsComponent } from '../amgraphs/amgraphs.component';
 
 @Component({
   selector: 'app-popup',
@@ -15,6 +16,7 @@ export class PopupComponent implements OnInit {
   input_signal!: signal;
 
   graphCompObj=new GraphsComponent();
+  amgraphCompObj=new AmgraphsComponent();
   
   title = 'angularpopup';
   showModal: boolean = false;
@@ -75,6 +77,7 @@ export class PopupComponent implements OnInit {
       // console.log("Input emitted is",this.input_signal);
       this.showModal = false;
       this.graphCompObj.createGraphs(this.input_signal);
+      // this.amgraphCompObj.createGraphs(this.input_signal);
     }
   }
 }

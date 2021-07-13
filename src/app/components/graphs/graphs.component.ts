@@ -44,6 +44,7 @@ export class GraphsComponent implements OnInit {
         yValues.push(eval(value));
         xValues.push(x);
       }
+      console.log(xValues,"  ",yValues);
     }
     console.log("Inside graph onInit");
     //Input Signal Graph

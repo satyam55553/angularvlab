@@ -8,23 +8,24 @@ import { signal } from 'src/app/signal';
   styleUrls: ['./amgraphs.component.css']
 })
 export class AmgraphsComponent implements OnInit {
-  Signal: signal;
+  Signal: signal = new signal;
   constructor() {
+   
+   }
+
+  ngOnInit(): void {
     this.Signal={
       amplitude:0,
       frequency:0,
       frequency_sensitivity:0,
     };
-   }
-
-  ngOnInit(): void {
     this.createGraphs(this.Signal);
   }
 
   createGraphs(signalFromLab:signal){
     this.Signal=signalFromLab;
     //This function generates data for our graph
-    function generateData(value: string, i1: number, i2: number, step = 0.5) {
+    function generateData(value: string, i1: number, i2: number, step = 0.01) {
       for (let x = i1; x <= i2; x += step) {
         yValues.push(eval(value));
         xValues.push(x);
@@ -41,8 +42,8 @@ export class AmgraphsComponent implements OnInit {
 
     var eqn = Am + "*Math.cos(" + wm + "*x+phase)";
 
-    generateData(eqn, 0, 10, 0.1);
-    new Chart("ipChart", {
+    generateData(eqn, 0, 10, 0.01);
+    new Chart("ipChartAm", {
       type: "line",
       data: {
         labels: xValues,
@@ -91,8 +92,8 @@ export class AmgraphsComponent implements OnInit {
     var wc = 2 * Math.PI * fc;
     var eqnc = Ac + "*Math.cos(" + wc + "*x+phasec)";
 
-    generateData(eqnc, 0, 10, 0.1);
-    new Chart("carrierChart", {
+    generateData(eqnc, 0, 10, 0.01);
+    new Chart("carrierChartAm", {
       type: "line",
       data: {
         labels: xValues,
@@ -136,14 +137,12 @@ export class AmgraphsComponent implements OnInit {
     var xValues: any[] = [];
     var yValues: any[] = [];
     var Ao = Ac;
-    var kf =signalFromLab.frequency_sensitivity;//0.2;
-    var mf = (kf * Am) / fm;
 
-    // var eqno = Ao + "*Math.cos(" + wc + "*x+" + mf + "*Math.sin(" + wm + "*x))";
-    var eqno = "("+(Ac + "+" + Am + "*Math.cos(" + wm + "*x)") + ")*Math.cos(" + wc + "*x)";
+    // var eqno = "("+(Ac + "+" + Am + "*Math.cos(" + wm + "*x)") + ")*Math.cos(" + wc + "*x)";
+    var eqno = Ac+"*(1+"+(Am/Ac)+"*Math.cos(" + wm + "*x))*Math.cos(" + wc + "*x)";
     console.log(eqno);
-    generateData(eqno, 0, 10, 0.1);
-    new Chart("opChart", {
+    generateData(eqno, 0, 10, 0.01);
+    new Chart("opChartAm", {
       type: "line",
       data: {
         labels: xValues,
