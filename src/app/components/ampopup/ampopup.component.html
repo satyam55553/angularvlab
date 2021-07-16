@@ -1,22 +1,25 @@
 <!-- <p>popup works!</p> -->
 <div class="container d-flex flex-column">
     <!-- <h1 class="text-center">Input Amplitude & Frequency</h1> -->
-    <button type="button" class="btn btn-primary rounded-pill m-6" (click)="show()">Input</button>
-    <button type="button" class="btn btn-primary rounded-pill m-6" (click)="show()">Carrier</button>
+    <button type="button" class="btn btn-primary rounded-pill btn-input" (click)="show()">Input</button>
+    <button type="button" class="btn btn-primary rounded-pill">Carrier</button>
 </div>
 <!-- Creates the bootstrap modal where the image will appear -->
 <div [style.display]="showModal ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="myModalLabel">Input Values</h4>
             </div>
+
             <div class="modal-body">
                 <form (ngSubmit)="onSubmitInput()" [formGroup]="registerForm">
                     <div class="row">
                         <div class="col-sm-6">
+
                             <div class="form-group">
-                                <label>Amplitude</label>
+                                <label>Amplitude <i>(Volt)</i></label>
                                 <input type="text" id="amplitude" formControlName="Amplitude" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Amplitude.errors }" />
                                 <div *ngIf="submitted && f.Amplitude.errors" class="invalid-feedback">
                                     <div *ngIf="f.Amplitude.errors.required">Amplitude is required</div>
@@ -25,7 +28,7 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label>Frequency</label>
+                                <label>Frequency <i>(Hz)</i></label>
                                 <input type="text" id="frequency" formControlName="Frequency" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Frequency.errors }" />
                                 <div *ngIf="submitted && f.Frequency.errors" class="invalid-feedback">
                                     <div *ngIf="f.Frequency.errors.required">Frequency is required</div>
@@ -33,28 +36,21 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <!-- <div class="col-sm-6">
                             <div class="form-group">
                                 <label>Frequency_Sensitivity</label>
-                                <input type="text" id="frequency_sensitivity" formControlName="Frequency_Sensitivity" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Frequency_Sensitivity.errors }" />
+                                <input type="text" id="frequency_sensitivity" formControlName="Frequency_Sensitivity"
+                                    class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && f.Frequency_Sensitivity.errors }" />
                                 <div *ngIf="submitted && f.Frequency_Sensitivity.errors" class="invalid-feedback">
-                                    <div *ngIf="f.Frequency_Sensitivity.errors">Frequency_Sensitivity must be Valid</div>
+                                    <div *ngIf="f.Frequency_Sensitivity.errors">Frequency_Sensitivity must be Valid
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- <div class="col-sm-6">
-                             <div class="form-group">
-                             <label>Password</label>
-                             <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-                             <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                                 <div *ngIf="f.password.errors.required">Password is required</div>
-                                 <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
-                             </div>
-                             </div>
-                         </div>
-                         </div>          -->
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary m-6">Submit</button>
+                        </div> -->
+
+                        <div class="form-group m-6">
+                            <button type="submit" class="btn btn-success mt-6 btn-submit">Submit</button>
                         </div>
                     </div>
                 </form>

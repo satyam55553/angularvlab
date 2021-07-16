@@ -37,6 +37,8 @@ export class GraphsComponent implements OnInit {
       // this.createGraphs(this.Signal);
   }
 
+  
+
   createGraphs(signalFromLab:signal){
     this.Signal=signalFromLab;
     //This function generates data for our graph
@@ -156,6 +158,7 @@ export class GraphsComponent implements OnInit {
     var kf =signalFromLab.frequency_sensitivity;//0.2;
     var mf = (kf * Am) / fm;
 
+    
     var eqno = Ao + "*Math.cos(" + wc + "*x+" + mf + "*Math.sin(" + wm + "*x))";
     // var eqno = "("+(Ac + "+" + Am + "*Math.cos(" + wm + "*x)") + ")*Math.cos(" + wc + "*x)";
     console.log(eqno);

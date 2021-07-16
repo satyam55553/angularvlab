@@ -1,0 +1,171 @@
+<div class="container d-flex flex-row">
+    <div class="lab-title p-3 pt-10">
+        <h1 class="display-1">Frequency Modulation</h1>
+        <p>Frequency modulation (FM) is a type of modulation where the frequency of the carrier is varied in accordance with the amplitude of modulating signal.</p>
+    </div>
+
+    <img class="m-3" src="https://vlab.amrita.edu/userfiles/7/image/AM%20modulation/1.gif" alt="FM image">
+</div>
+<div class="container my-3">
+
+    <head>
+        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG">
+        </script>
+    </head>
+    <p class="lead">A continuous-wave goes on continuously without any intervals and it is the baseband message signal, which contains the information. This wave has to be modulated.<br> According to the standard definition, “In Frequency Modulation (FM), the frequency
+        of the carrier signal varies in accordance with the instantaneous amplitude of the modulating signal” Which means, the amplitude and the phase of the carrier signal remains constant whereas the frequency of the carrier changes, at each instant.<br>        This can be well explained by the following figures.</p>
+
+    <img src="https://www.tutorialspoint.com/analog_communication/images/base_band_signal.jpg" class="img-fluid" alt="Responsive image">
+    <img src="https://www.tutorialspoint.com/analog_communication/images/carrier_signal.jpg" class="img-fluid" alt="Responsive image">
+
+    <img src="https://www.tutorialspoint.com/principles_of_communication/images/frequency_modulated_wave.jpg" class="img-fluid" alt="Responsive image">
+    <br>
+    <p class="lead">The first figure shows the modulating wave, which is the message signal. The next one is the carrier wave, which is a high frequency signal and contains no information. While, the last one is the resultant modulated wave. <br>The frequency of the
+        modulated wave remains constant as the carrier wave frequency when the message signal is at zero. The frequency increases when the message signal reaches its maximum amplitude. <br>Which means, with the increase in amplitude of the modulating
+        or message signal, the carrier frequency increases. Likewise, with the decrease in the amplitude of the modulating signal, the frequency also decreases.</p>
+    <br>
+    <h2>Mathematical Expressions</h2>
+    <!-- <p class="lead">Following are the mathematical expressions for these waves.<br> Time-domain Representation of the Waves<br> Let the modulating signal be:</p>
+    <p class="lead"><b>m(t)=Amcos(2πfmt)</b><br><br> and the carrier signal be,<br><br>
+  
+        <b>c(t)=Accos(2πfct)</b><br><br> Where,
+        <br> Am and Ac are the amplitude of the modulating signal and the carrier signal respectively,<br> fm and fc are the frequency of the modulating signal and the carrier signal respectively.<br> Then, the <b>equation of Frequency Modulated wave</b>        will be:<br><br></p>
+  
+    <h2>s(t)=[Ac+Amcos(2πfmt)]cos(2πfct)</h2> -->
+    <p>Let the carrier frequency be fc
+
+        <br>The frequency at maximum amplitude of the message signal = fc + Δf
+
+        <br>The frequency at minimum amplitude of the message signal = fc − Δf
+
+        <br>The difference between FM modulated frequency and normal frequency is termed as Frequency Deviation and is denoted by Δf.
+
+        <br>The deviation of the frequency of the carrier signal from high to low or low to high can be termed as the Carrier Swing.
+
+        <br>Carrier Swing = 2 × frequency deviation
+
+        <br> = 2 × Δf
+
+        <br><br><b>Equation for FM WAVE</b>
+        <br> The equation for FM wave is −
+
+        <br>
+        <p class="lead">s(t) = A<sub>c</sub> cos[w<sub>c</sub>t + 2K<sub>f</sub> m(t)] </p>
+
+        <br>Where,
+
+        <br> Ac = the amplitude of the carrier
+
+        <br> wc = angular frequency of the carrier = 2πfc
+
+        <br> m(t) = message signal
+
+        <br><br>
+        <h2>Types of FM</h2>
+
+        <p>
+
+            <br>FM can be divided into Narrowband FM and Wideband FM.
+
+            <br><br><b>Narrowband FM</b>
+            <br>The features of Narrowband FM are as follows −
+
+            <br>->This frequency modulation has a small bandwidth.
+
+            <br>->The modulation index is small.
+
+            <br>->Its spectrum consists of carrier, USB, and LSB.
+
+            <br>->This is used in mobile communications such as police wireless, ambulances, taxicabs, etc.
+
+            <br><b>Wideband FM</b>
+            <br>The features of Wideband FM are as follows −
+
+            <br>->This frequency modulation has infinite bandwidth.
+
+            <br>->The modulation index is large, i.e., higher than 1.
+
+            <br>->Its spectrum consists of a carrier and infinite number of sidebands, which are located around it.
+
+            <br>->This is used in entertainment broadcasting applications such as FM radio, TV, etc.
+        </p>
+
+        <br><br>
+        <h2>Modulation Index</h2>
+        <p>
+
+            <br>The modulation index of FM is defined as the ratio of the frequency deviation of the carrier to the frequency of the modulating signal
+
+            <br>mf = Modulation Index of FM = ∆f/fm
+        </p>
+        <br><br>
+        <h2>The Bandwidth of Frequency Modulation Signal</h2>
+        <p>
+            <br>Bandwidth is one of the main elements of FM signal. In FM signal, the sidebands will extend either side which will extend to infinity; however, the strength of them drops away. Auspiciously, it is the potential to restrict the BW of an
+            FM signal without changing its value excessively.
+
+            <br>Recall, the bandwidth of a complex signal like AM is the difference between its highest and lowest frequency components, and is expressed in Hertz (Hz). Bandwidth deals with only frequencies. AM has only two sidebands (USB and LSB) and
+            the bandwidth was found to be 2 fm.
+
+            <br>In FM it is not so simple. FM signal spectrum is quite complex and will have an infinite number of sidebands as shown in the figure. This figure gives an idea, how the spectrum expands as the modulation index increases. Sidebands are separated
+            from the carrier by fc ± fm, fc ± 2fm, fc ± 3fm, and so on.
+
+            <br><br><b>Bandwidth of FM Signal</b>
+            <br>The bandwidth of FM Signal
+
+            <img src="https://www.elprocus.com/wp-content/uploads/Bandwidth-of-FM-Signal.jpg" class="img-fluid" alt="Responsive image">
+
+            <br>Only the first few sidebands will contain the major share of the power (98% of the total power) and therefore only these few bands are considered to be significant sidebands.
+
+            <br>As a rule of thumb, often termed as Carson’s Rule, 98% of the signal power in FM is contained within a bandwidth equal to the deviation frequency, plus the modulation frequency-doubled.
+
+            <br>Carson’s rule: Bandwidth of FM BWFM = 2 [ Δf + fm ].
+
+            <br>= 2 fm [ mf + 1 ]
+        </p>
+
+        <br><br><br>
+
+        <h2>Advantages of Frequency Modulation</h2>
+        <p>
+            <br>The advantages of frequency modulation include the following:
+
+            <br>->Less noise and interference
+            <br>->Service areas are well defined for specified transmitter power.
+            <br>->As compared to amplitude modulation, FM includes low power consumption.
+            <br>->The radiated power is less.
+            <br>->Guard bands separate nearby FM channels.
+            <br>->Lesser geographical interference among adjacent stations.
+            <br>->Enhanced S/N (signal to noise) ratio like 25dB with respect to manmade intrusion
+            <br>->Modulation technique is easily applied at a low power phase of the transmitter:
+            <br>->It is the potential to employ efficient RF amplifiers including frequency modulated signals.
+        </p>
+
+        <h2>Disadvantages of Frequency Modulation</h2>
+        <p>
+            <br>The disadvantages of frequency modulation include the following.
+
+            <br>->High equipment cost is high
+            <br>->High bandwidth
+            <br>->The receiving area of the FM signal is small.
+            <br>->The antennas for FM systems should be kept close for better communication
+            <br>->Much more Bandwidth (as much as 20 times as much).
+            <br>->More complicated receiver and transmitter.
+            <br>->FM has poorer spectral efficiency than some other modulation formats:
+            <br>->Requires more complicated demodulator:
+            <br>->Some other modes have higher data spectral efficiency:
+            <br>->Sidebands expand to infinity any side
+            <br>->The spectral efficiency of FM is poor as compared to other modulation methods
+            <br>->It uses a more complicated demodulator:
+            <br>->Other modes include high data spectral efficiency
+            <br>->Sidebands extend to infinity on either side
+        </p>
+
+        <br><br>
+        <h2>Conclusion</h2>
+        <p>Thus, this is all about an overview of frequency modulation. The applications of frequency modulation include FM radio broadcasting, radar, seismic prospecting, telemetry, & observing infants for seizure through EEG, music synthesis, two-way radio
+            systems, magnetic tape recording systems, video broadcast systems, etc. From the above information, finally, we can conclude that, in frequency modulation, both efficiencies as well as bandwidth depend on the maximum modulation index and modulating
+            frequency. In contrast to amplitude modulation, the frequency modulation signal has larger bandwidth, superior efficiency, & improved immunity toward the noise.</p>
+
+</div>
+<br><br><br><br><br><br>

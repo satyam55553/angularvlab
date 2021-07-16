@@ -292,13 +292,13 @@
 <div class="container d-flex flex-row">
     <div class="lab-title p-3 pt-10">
         <h1 class="display-1">Frequency Modulation</h1>
-        <p>Frequency modulation (FM) is a type of modulation where the frequency of the carrier is varied in accordance with the modulating signal. The amplitude of the carrier remains constant.</p>
+        <p>Frequency modulation (FM) is a type of modulation where the frequency of the carrier is varied in accordance with the amplitude of modulating signal.</p>
     </div>
 
     <!-- <img class="m-3" src="https://vlab.amrita.edu/userfiles/7/image/AM%20modulation/1.gif" alt="FM image"> -->
 </div>
 <div class="container">
-    <button class="btn btn-primary rounded-pill m-21" routerLink="/learnmore">Learn More</button>
+    <button class="btn btn-danger rounded-pill m-21" routerLink="/fmtheory">Learn More</button>
 </div>
 <div class="container">
     <!-- Next Steps -->
@@ -314,7 +314,7 @@
             <span>Frequency Modulator</span>
         </div>
         <div class="">
-            <button type=" button" class="btn btn-primary rounded-pill m-21">Output</button>
+            <button type=" button" class="btn btn-danger rounded-pill m-21">Output</button>
         </div>
 
     </div>
@@ -327,3 +327,26 @@
     <!-- [signalFromLab]="input_signal_fromPopup" -->
     <app-graphs></app-graphs>
 </div>
+
+<div class="container">
+    <h2 class="text-primary">Find out this!</h2>
+    <p>Calculate the below parameters</p>
+    <br>
+    <h5>The amount of change in the carrier frequency produced, by the amplitude of the input modulating signal, is called <b>frequency deviation</b></h5>
+    <p class="lead">Δf = fmax – fc = fc – fmin</p>
+    <br>
+    <h5>The <b>modulation index</b> of FM is defined as the ratio of the frequency deviation of the carrier to the frequency of the modulating signal </h5>
+    <p class="lead">mf = Modulation Index of FM = ∆f/fm</p>
+    <br>
+    <h5><b>Bandwidth</b> of FM is given by <b><em>Carson’s rule</em></b></h5>
+    <p class="lead">BWFM = 2 [ Δf + fm ] = 2 fm [ mf + 1 ]</p>
+    <br>
+    <h5>The frequency modulation is known as a <b>constant bandwidth system</b></h5>
+    <p class="lead"><i>Find out why?</i></p>
+    <br>
+    <h5>The frequency deviation Δf depends on the <b>frequency sensitivity</b> K<sub>f</sub> of the frequency modulator</h5>
+    <p class="lead">Δf = K<sub>f</sub> A<sub>m</sub> </p>
+    <p class="lead"><i>Find out the ideal value for frequency sensitivity</i></p>
+    <br>
+</div>
+<br><br><br><br><br><br>

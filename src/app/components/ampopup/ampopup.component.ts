@@ -35,7 +35,7 @@ ngOnInit(): void {
   this.registerForm = this.formBuilder.group({
     Amplitude: ['', [Validators.required, Validators.minLength(1)]],
     Frequency: ['', [Validators.required, Validators.minLength(1)]],
-    Frequency_Sensitivity: ['', [Validators.required, Validators.minLength(1)]],
+    // Frequency_Sensitivity: ['', [Validators.required, Validators.minLength(1)]],
     // mobile: ['', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/), Validators.minLength(10)]]
   });
 }
@@ -60,7 +60,7 @@ onSubmitInput() {
     //getting values from form fields
     amplitude: this.registerForm.value.Amplitude,
     frequency: this.registerForm.value.Frequency,
-    frequency_sensitivity: this.registerForm.value.Frequency_Sensitivity,
+    frequency_sensitivity: 0,
   };
   console.log(this.input_signal);
   
