@@ -14,6 +14,7 @@ export class GraphsComponent implements OnInit {
   // @Input() signalFromLab: any;
   
   Signal: signal;
+  
   constructor() {
     this.Signal={
       amplitude:0,
@@ -42,12 +43,12 @@ export class GraphsComponent implements OnInit {
   createGraphs(signalFromLab:signal){
     this.Signal=signalFromLab;
     //This function generates data for our graph
-    function generateData(value: string, i1: number, i2: number, step = 0.5) {
+    function generateData(value: string, i1: number, i2: number, step:number) {
       for (let x = i1; x <= i2; x += step) {
         yValues.push(eval(value));
         xValues.push(x);
       }
-      console.log(xValues,"  ",yValues);
+      // console.log(xValues,"  ",yValues);
     }
     
     //Input Signal Graph
@@ -60,7 +61,9 @@ export class GraphsComponent implements OnInit {
 
     var eqn = Am + "*Math.cos(" + wm + "*x+phase)";
 
-    generateData(eqn, 0, 10, 0.1);
+    var rangeX=8/fm;
+    console.log("RangeX is ",rangeX);
+    generateData(eqn, 0, rangeX,rangeX/80);
     new Chart("ipChart", {
       type: "line",
       data: {
@@ -105,12 +108,13 @@ export class GraphsComponent implements OnInit {
     var xValues: any[] = [];
     var yValues: any[] = [];
     var Ac = 1;
-    var fc = 1;//frrquency of carrier
+    var fc = 1000;//frrquency of carrier
     var phasec = 0;//Math.PI/2
     var wc = 2 * Math.PI * fc;
     var eqnc = Ac + "*Math.cos(" + wc + "*x+phasec)";
-
-    generateData(eqnc, 0, 10, 0.1);
+    var rangeX=4/fc;
+    console.log("RangeX carrier is ",rangeX);
+    generateData(eqnc, 0, rangeX,rangeX/40);
     new Chart("carrierChart", {
       type: "line",
       data: {
@@ -162,7 +166,9 @@ export class GraphsComponent implements OnInit {
     var eqno = Ao + "*Math.cos(" + wc + "*x+" + mf + "*Math.sin(" + wm + "*x))";
     // var eqno = "("+(Ac + "+" + Am + "*Math.cos(" + wm + "*x)") + ")*Math.cos(" + wc + "*x)";
     console.log(eqno);
-    generateData(eqno, 0, 10, 0.1);
+
+    console.log("RangeX op is ",rangeX);
+    generateData(eqno, 0, rangeX,rangeX/40);
     new Chart("opChart", {
       type: "line",
       data: {
