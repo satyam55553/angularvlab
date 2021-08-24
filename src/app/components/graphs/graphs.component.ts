@@ -12,16 +12,16 @@ import { signal } from 'src/app/signal';
 })
 export class GraphsComponent implements OnInit {
   // @Input() signalFromLab: any;
-  
+
   Signal: signal;
-  
+
   constructor() {
-    this.Signal={
-      amplitude:0,
-      frequency:0,
-      frequency_sensitivity:0,
+    this.Signal = {
+      amplitude: 0,
+      frequency: 0,
+      frequency_sensitivity: 0,
     };
-   }
+  }
 
   ngOnInit(): void {
     console.log("Inside graph onInit");
@@ -33,37 +33,37 @@ export class GraphsComponent implements OnInit {
     //     frequency: 1,
     //     frequency_sensitivity: 1,
     //   };
-    
+
     // }
-      // this.createGraphs(this.Signal);
+    // this.createGraphs(this.Signal);
   }
 
-  
 
-  createGraphs(signalFromLab:signal){
-    this.Signal=signalFromLab;
+
+  createGraphs(signalFromLab: signal) {
+    this.Signal = signalFromLab;
     //This function generates data for our graph
-    function generateData(value: string, i1: number, i2: number, step:number) {
+    function generateData(value: string, i1: number, i2: number, step: number) {
       for (let x = i1; x <= i2; x += step) {
         yValues.push(eval(value));
         xValues.push(x);
       }
       // console.log(xValues,"  ",yValues);
     }
-    
+
     //Input Signal Graph
     var xValues: any[] = [];
     var yValues: any[] = [];
-    var Am =signalFromLab.amplitude//1;
-    var fm =signalFromLab.frequency;//1 / 4;//frequency of i/p
+    var Am = signalFromLab.amplitude//1;
+    var fm = signalFromLab.frequency;//1 / 4;//frequency of i/p
     var phase = 0;//Math.PI/2
     var wm = 2 * Math.PI * fm;
 
     var eqn = Am + "*Math.cos(" + wm + "*x+phase)";
 
-    var rangeX=8/fm;
-    console.log("RangeX is ",rangeX);
-    generateData(eqn, 0, rangeX,rangeX/80);
+    var rangeX = 8 / fm;
+    console.log("RangeX is ", rangeX);
+    generateData(eqn, 0, rangeX, rangeX / 80);
     new Chart("ipChart", {
       type: "line",
       data: {
@@ -112,9 +112,9 @@ export class GraphsComponent implements OnInit {
     var phasec = 0;//Math.PI/2
     var wc = 2 * Math.PI * fc;
     var eqnc = Ac + "*Math.cos(" + wc + "*x+phasec)";
-    var rangeX=4/fc;
-    console.log("RangeX carrier is ",rangeX);
-    generateData(eqnc, 0, rangeX,rangeX/40);
+    var rangeX = 4 / fc;
+    console.log("RangeX carrier is ", rangeX);
+    generateData(eqnc, 0, rangeX, rangeX / 80);
     new Chart("carrierChart", {
       type: "line",
       data: {
@@ -159,16 +159,16 @@ export class GraphsComponent implements OnInit {
     var xValues: any[] = [];
     var yValues: any[] = [];
     var Ao = Ac;
-    var kf =signalFromLab.frequency_sensitivity;//0.2;
+    var kf = signalFromLab.frequency_sensitivity;//0.2;
     var mf = (kf * Am) / fm;
 
-    
+
     var eqno = Ao + "*Math.cos(" + wc + "*x+" + mf + "*Math.sin(" + wm + "*x))";
     // var eqno = "("+(Ac + "+" + Am + "*Math.cos(" + wm + "*x)") + ")*Math.cos(" + wc + "*x)";
     console.log(eqno);
 
-    console.log("RangeX op is ",rangeX);
-    generateData(eqno, 0, rangeX,rangeX/40);
+    console.log("RangeX op is ", rangeX);
+    generateData(eqno, 0, rangeX, rangeX / 80);
     new Chart("opChart", {
       type: "line",
       data: {
