@@ -168,7 +168,7 @@ export class GraphsComponent implements OnInit {
     console.log(eqno);
 
     console.log("RangeX op is ", rangeX);
-    generateData(eqno, 0, rangeX, rangeX / 80);
+    generateData(eqno, 0, rangeX, rangeX / 100);
     new Chart("opChart", {
       type: "line",
       data: {

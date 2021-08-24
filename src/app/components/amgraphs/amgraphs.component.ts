@@ -22,7 +22,7 @@ export class AmgraphsComponent implements OnInit {
   }
 
   createGraphs(signalFromLab:signal){
-    function generateData(value: string, i1: number, i2: number, step = 0.5) {
+    function generateData(value: string, i1: number, i2: number, step :number) {
       for (let x = i1; x <= i2; x += step) {
         yValues.push(eval(value));
         xValues.push(x);
@@ -36,10 +36,11 @@ export class AmgraphsComponent implements OnInit {
     var fm = signalFromLab.frequency;//1 / 4;//frequency of i/p
     var phase = 0;//Math.PI/2
     var wm = 2 * Math.PI * fm;
+    var rangeX = 8 / fm;
+    // var eqn = Am + "*Math.sin(" + wm + "*x+phase)";
+    var eqn = Am + "*Math.cos(" + wm + "*x+phase)";
 
-    var eqn = Am + "*Math.sin(" + wm + "*x+phase)";
-
-    generateData(eqn, 0, 10, 0.1);
+    generateData(eqn, 0, rangeX, rangeX/80);
     new Chart("ipChartAm", {
       type: "line",
       data: {
@@ -62,7 +63,7 @@ export class AmgraphsComponent implements OnInit {
           yAxes:[
             {
               ticks:{
-                display:false,
+                display:true,
               }
             }
           ],
@@ -80,57 +81,58 @@ export class AmgraphsComponent implements OnInit {
       }
     });
 
-        //Carrier signal
-        var xValues: any[] = [];
-        var yValues: any[] = [];
-        var Ac = 5;
-        var fc = 1;//frrquency of carrier
-        var phasec = 0;//Math.PI/2
-        var wc = 2 * Math.PI * fc;
-        var eqnc = Ac + "*Math.sin(" + wc + "*x+phasec)";
-    
-        generateData(eqnc, 0, 10, 0.1);
-        new Chart("carrierChartAm", {
-          type: "line",
-          data: {
-            labels: xValues,
-            datasets: [{
-              fill: false,
-              pointRadius: 2,
-              borderColor: "rgba(0,0,255,0.5)",
-              data: yValues
-            }]
-          },
-          options: {
-            legend: { display: false },
-            title: {
-              display: true,
-              text: "Carrier Signal",
-              fontSize: 16
-            },
-            scales:{
-              yAxes:[
-                {
-                  ticks:{
-                    display:false,
-                  }
-                }
-              ],
-              xAxes:[
-                {
-                  ticks:{
-                    display:false
-                    // callback: function(label,index,labels){
-                    //   return parseInt(label.toString()).toFixed(5);
-                    // }
-                  }
-                }
-              ]
+    //Carrier signal
+    var xValues: any[] = [];
+    var yValues: any[] = [];
+    var Ac = 1;
+    var fc = 1000;//frrquency of carrier
+    var phasec = 0;//Math.PI/2
+    var wc = 2 * Math.PI * fc;
+    var eqnc = Ac + "*Math.cos(" + wc + "*x+phasec)";
+    var rangeX = 4 / fc;
+    console.log("RangeX carrier is ", rangeX);
+    generateData(eqnc, 0, rangeX, rangeX / 80);
+    new Chart("carrierChartAm", {
+      type: "line",
+      data: {
+        labels: xValues,
+        datasets: [{
+          fill: false,
+          pointRadius: 2,
+          borderColor: "rgba(0,0,255,0.5)",
+          data: yValues
+        }]
+      },
+      options: {
+        legend: { display: false },
+        title: {
+          display: true,
+          text: "Carrier Signal",
+          fontSize: 16
+        },
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                display: true,
+              }
             }
-          }
-        });
+          ],
+          xAxes: [
+            {
+              ticks: {
+                display: false
+                // callback: function(label,index,labels){
+                //   return parseInt(label.toString()).toFixed(5);
+                // }
+              }
+            }
+          ]
+        }
+      }
+    });
 
-        //Output wave
+    //Output wave
     var xValues: any[] = [];
     var yValues: any[] = [];
     var Ac = 5;
@@ -139,12 +141,13 @@ export class AmgraphsComponent implements OnInit {
     //var kf = 0.2;
     
 
-    var eqno = "("+(Ac+ "+" +Am + "*Math.sin(" + wm + "*x)")+")*Math.sin(" + wc + "*x)" ;
+    // var eqno = "("+(Ac+ "+" +Am + "*Math.sin(" + wm + "*x)")+")*Math.sin(" + wc + "*x)" ;
         
-    //
+    var eqno = "("+Ac + "+" + Am + "*Math.cos(" + wm + "*x))*Math.cos(" + wc + "*x)";
+    //Am + "*Math.cos(" + wm + "*x+phase)"
     //var eqno = Ao + "*Math.cos(" + wc + "*x+" + mf + "*Math.sin(" + wm + "*x))";
 
-    generateData(eqno, 0, 10, 0.1);
+    generateData(eqno, 0, rangeX, rangeX/100);
     new Chart("opChartAm", {
       type: "line",
       data: {
@@ -167,7 +170,7 @@ export class AmgraphsComponent implements OnInit {
           yAxes:[
             {
               ticks:{
-                display:false,//Make it true, to display the axis values
+                display:true,//Make it true, to display the axis values
               }
             }
           ],
